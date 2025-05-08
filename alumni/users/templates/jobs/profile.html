@@ -1,0 +1,13 @@
+{% block content %}
+  <h1>My Profile</h1>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Register Number:</strong> {{ user.register_number }}</p>
+  <p><strong>Department:</strong> {{ user.department }}</p>
+  <p><strong>Academic Year:</strong> {{ user.academic_year }}</p>
+  <p><strong>Phone:</strong> {{ user.phone_number }}</p>
+  <p><strong>Address:</strong> {{ user.address }}</p>
+
+  <a href="{% url 'edit_profile' %}" class="btn btn-primary">✏️ Edit Profile</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "gallery/Base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="default">Add Register Numbers</button>
+    <a href="jobs:users_/valid_register_bulk_add.html" class="button">Back</a>
+</form>
+{% endblock %}

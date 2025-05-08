@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Portal - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% load static %}
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            color: #fefcfc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header-container {
+           display: flex;
+           align-items: center;
+           gap: 40px;
+           position: relative;
+           z-index: 2;
+           animation: fadeInDown 1s ease-in-out;
+           padding: 5px;
+        }
+
+        .logo {
+           width: 160px;
+           height: auto;
+        }
+
+        /* Overlay */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background:  rgba(1, 36, 101, 0.948);
+            z-index: 1;
+        }
+        
+        /* Header */
+
+        h1 {
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1s ease-in-out;
+            line-height: 0.5;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: 25;
+            margin-bottom: 2px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1s ease-in-out;
+            line-height: 0.1;
+        }
+
+        h3 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 10px 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 10px;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Content Cards */
+        .content-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-in-out;
+           
+        }
+
+        .card {
+            background: rgba(102, 102, 102, 0.1);
+            color: black;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.5s ease;
+            box-shadow:  10px 10px 10px rgb(151, 151, 151);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #0c0c0c;
+        }
+
+        .mySlides {
+           transition: opacity 1s ease-in-out;
+           height: 500px;
+           width: 750px;
+           text-align: center;
+        }
+
+        .card1 {
+            height: 500px;
+            width: 750px;
+            background: rgb(198, 198, 198);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .card1:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        span {
+            font-weight: bold;
+            color: rgb(23, 22, 22);
+        }
+
+        .About {
+            background: rgba(240, 240, 240, 0.1);
+            color: black;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 1px;
+            width: 500px;
+            text-align: start;
+            transition: transform 0.3s ease, box-shadow 0.5s ease;
+            box-shadow:  0.1px 3px 8px 5px rgb(201, 200, 200);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .About {
+            color:#0c0c0c;
+            width: 80rem;
+            height: 65rem;
+            margin-bottom: 50px;
+        }
+
+        .box {
+            margin:15px;
+            padding-top: 2px;
+            padding-left: 20px;
+            padding-bottom: 230   px;
+            border: 1px solid rgb(214, 213, 213);
+            border-radius: 5px;
+        }
+
+        .title {
+            color: rgba(26, 30, 120);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .dept {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color:#0967c6;
+        }
+
+        .box img {
+            width: 150rch;
+            height: 410px;
+        }
+
+        .footer {
+            background:  #003366;
+            width: 100%;
+            height: 390px;
+            margin-top: 50px;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        footer {
+            background: #003366;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer h4 {
+            font-size: 40px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            width: 25%;
+            min-width: 200px;
+            margin-bottom: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .footer-section h3 {
+           text-decoration: underline;
+           padding-bottom: 5px;
+           margin-bottom: 10px;
+           font-size: 35px;
+           font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 5px 0;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+            color: #0c06af;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+        color: #0c06af; /* Change to your college's theme color */
+        }
+
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+    <!-- logo -->
+      <div class="header-container">
+        <img src="{% static 'Bharathidasan_University_logo.png' %}" class="logo">
+
+    <!-- Header -->
+        <div class="header-text">
+           <h1>Bharathidasan University</h1>
+           <h4>Tiruchirappalli - 620 024, Tamil Nadu, India</h4>
+           <h4>(Accredited with A+ Grade by NAAC in the Third Cycle</h4>
+           <h4>& 36th Rank among the Indian Universities in NIRF-2024)<h4> 
+
+           <h3>Welcome to the Alumni Portal</h3>
+        </div>
+      </div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'register' %}"><i class="fas fa-user-plus"></i>Register</a></li>
+            <li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+            <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+            <li><a href="/admin"><i class="fas fa-user-shield"></i>Admin</a></li>
+            <li><a href="/profile/">Profile</a></li>
+            <li><a href="/jobs/"><i class="fas fa-briefcase"></i>Jobs</a></li>
+            <li><a href="/college_posts/"><i class="fas fa-newspaper"></i>Posts</a></li>
+            <li><a href="{% url 'gallery' %}"><i class="fas fa-photo-video"></i>Gallery</a></li>
+            <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Cards -->
+    <div class="content-cards">
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="https://media.istockphoto.com/id/1066324992/photo/graduation-day.jpg?s=612x612&w=is&k=20&c=S2q2_wJbntlRw4Sz2yOEZ41vbVDxCCLSwenFqMjZ3-s=" alt="Networking">
+            <h3>Networking</h3>
+            <p>Connect with alumni and expand your professional network.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card1">
+            <div class="slideshow-container">
+                <img class="mySlides" src="{% static 'images/images (2).jpg' %}" style="display:none;">
+                <img class="mySlides" src="{% static 'images/images.jpg' %}" style="display:none;">
+                <img class="mySlides" src="{% static 'images/img1.jpg' %}" style="display:none;">
+                <img class="mySlides" src="{% static 'images/img2.webp' %}" style="display:none;">
+                <img class="mySlides" src="{% static 'images/img3.webp' %}" style="display:none;">
+                <img class="mySlides" src="{% static 'images/img4.jpg' %}" style="display:none;">
+                <img class="mySlides" src="{% static 'images/img5.jpg' %}" style="display:none;">
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="https://5.imimg.com/data5/GK/LR/EH/SELLER-1469653/college-event-management-service.jpg" alt="Events">
+            <h3>Events</h3>
+            <p>Stay updated with alumni events and reunions.</p>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div class="About">
+      <div class="box">
+        <h2 class="title">About Bharathidasan University</h2>
+        <p>Bharathidasan University established in February 1982 was named after the great revolutionary Tamil Poet, 
+           Bharathidasan (1891-1964). The motto of the University <span>"We will create a brave new world"</span> has been framed from 
+           Bharathidasan's poetic words <span>"புதியதோர் உலகம் செய்வோம்"</span>. The University endeavours to be true to such 
+           a vision by creating in the region a brave new world of academic innovation for social change.</p>
+
+        <img src="{% static 'bdu2.jpg' %}">
+
+        <h2 class="title">School of Computer Science, Engineering & Applications</h2>
+        <h2 class="dept">About Department</h2>
+        <p>The <span>Department of Computer Engineering and Technology,</span> founded in the academic year <span>2008–2009</span>, is a vital part of the 
+            <span>School of Computer Science, Engineering and Applications at Bharathidasan University</span>, located in the <span>Khajamalai City 
+            Campus</span>. With a strong focus on academic excellence and research innovation, the department equips students with both 
+            theoretical knowledge and practical skills needed to thrive in today’s tech-driven world.
+
+            Modern computing infrastructure, combined with experienced faculty, ensures that students receive a comprehensive 
+            education. Through internships, in-plant training, and technical workshops, learners are given ample exposure to 
+            real-world applications and industry practices. The department is known for nurturing innovative ideas and fostering 
+            research collaborations, including several externally funded projects.
+        </p>
+        <p>
+            To keep pace with evolving technologies, the curriculum is regularly reviewed and updated by a panel of academic and 
+            industry experts. The department also houses a well-stocked library with over 3,700 books and a digital collection of 
+            more than 100 e-books, supporting a rich academic environment. As an active member of IEEE and ACM, it offers access 
+            to leading journals and publications.
+        </p>
+        <p>
+            Research within the department spans various emerging domains such as Artificial Intelligence, Machine Learning, 
+            Semantic Web, Ontology, Networks, QoS, and Bioinformatics.The presence of the Bharathidasan University Technology 
+            Park (BUTP), established in 2005, further strengthens the department’s commitment to bridging the gap between academia 
+            and industry, serving as a pioneering initiative in promoting IT development in Tiruchirappalli.   
+        </p>
+     </div>
+    </div>
+
+    <!-- footer -->
+
+     <footer>
+        <div class="footer">
+            <h4>For More Informations</h4>
+    
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3>About Us</h3>
+                        <p>Bharathidasan university</p>
+                    </div>
+            
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Admissions</a></li>
+                            <li><a href="#">Academics</a></li>
+                            <li><a href="#">Campus Life</a></li>
+                            <li><a href="#">Alumni</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+            
+                    <div class="footer-section">
+                        <h3>Contact</h3>
+                        <p>Bharathidasan University, Tiruchirappalli.</p>
+                        <p>Email: info@Bharathidasanuniversity.ac.in</p>
+                        <p>Phone: 239 493</p>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Bharathidasan University. All Rights Reserved.</p>
+                </div>
+            
+        </div>
+    </footer>
+    
+
+    <script>
+        // Add hover effect to cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+                card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+            });
+        });
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slideshow-container .mySlides");
+
+    function showSlides() {
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1; }
+
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+
+    showSlides();
+
+
+    </script>
+</body>
+</html>

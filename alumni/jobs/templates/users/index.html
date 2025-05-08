@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Portal - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7fa;
+            color: #333;
+            display: flex;
+        }
+
+        /* Vertical Navbar */
+        .navbar {
+            width: 250px;
+            background: #2c3e50;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .navbar ul li {
+            margin: 15px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 10px 20px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            background: #34495e;
+            transform: translateX(10px);
+        }
+
+        .navbar ul li a i {
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            padding: 40px;
+            width: calc(100% - 250px);
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* Content Sections */
+        .section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .section img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 15px 20px;
+            }
+
+            .navbar .logo {
+                margin-bottom: 0;
+            }
+
+            .navbar ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar ul li {
+                margin: 10px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Vertical Navbar -->
+    <nav class="navbar">
+        <div class="logo">AlumniHub</div>
+        <ul>
+            <li><a href="{% url 'register' %}"><i class="fas fa-user-plus"></i>Register</a></li>
+            <li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+            <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+            <li><a href="{% url 'admin_dashboard' %}"><i class="fas fa-user-shield"></i>Admin</a></li>
+            <li><a href="/jobs/"><i class="fas fa-briefcase"></i>Jobs</a></li>
+            <li><a href="/profile/">Profile</a></li>
+            <li><a href="/college_posts/"><i class="fas fa-newspaper"></i>Posts</a></li>
+            <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Welcome to AlumniHub</h1>
+            <p>Stay connected with your alma mater and explore new opportunities.</p>
+        </div>
+
+        <!-- About Section -->
+        <div class="section">
+            <h2>About AlumniHub</h2>
+            <img src="https://via.placeholder.com/800x400" alt="About AlumniHub">
+            <p>
+                AlumniHub is a platform designed to connect alumni with their alma mater and fellow graduates. 
+                Whether you're looking for job opportunities, networking events, or updates from your college, 
+                AlumniHub has you covered.
+            </p>
+        </div>
+
+        <!-- Jobs Section -->
+        <div class="section">
+            <h2>Job Opportunities</h2>
+            <img src="https://via.placeholder.com/800x400" alt="Job Opportunities">
+            <p>
+                Explore a wide range of job opportunities tailored for alumni. From entry-level positions to 
+                executive roles, find the perfect job to advance your career.
+            </p>
+        </div>
+
+        <!-- College Posts Section -->
+        <div class="section">
+            <h2>College Posts</h2>
+            <img src="https://via.placeholder.com/800x400" alt="College Posts">
+            <p>
+                Stay updated with the latest news, events, and announcements from your college. 
+                AlumniHub keeps you informed about everything happening on campus.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add hover effect to navigation links
+        const navLinks = document.querySelectorAll('.navbar ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.transform = 'translateX(10px)';
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+</html>

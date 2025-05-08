@@ -1,0 +1,218 @@
+{% block content %}
+<div class="profile-container">
+  <div class="profile-header">
+    <h1 class="profile-title">My Profile</h1>
+    <a href="{% url 'edit_profile' %}" class="btn btn-primary">
+      <i class="fas fa-edit"></i> Edit Profile
+    </a>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-avatar-section">
+      <div class="avatar-container">
+        
+          <img src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg" alt="Profile Picture" class="profile-avatar">
+        
+          <div class="default-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+        
+      </div>
+      <h2 class="profile-name">{{ user.first_name }} {{ user.last_name }}</h2>
+      <p class="profile-username">@{{ user.username }}</p>
+    </div>
+
+    <div class="profile-details">
+      <div class="detail-section">
+        <h3 class="section-title">Personal Information</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="detail-label">Email</span>
+            <span class="detail-value">{{ user.email }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Phone</span>
+            <span class="detail-value">{{ user.phone_number }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Address</span>
+            <span class="detail-value">{{ user.address }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3 class="section-title">Academic Information</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="detail-label">Register Number</span>
+            <span class="detail-value">{{ user.register_number }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Department</span>
+            <span class="detail-value">{{ user.department }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Academic Year</span>
+            <span class="detail-value">{{ user.academic_year }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.profile-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.profile-title {
+  color: #2c3e50;
+  margin: 0;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-avatar-section {
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+.avatar-container {
+  margin: 0 auto 15px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.default-avatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.default-avatar i {
+  font-size: 80px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.profile-name {
+  margin: 5px 0;
+  font-size: 24px;
+}
+
+.profile-username {
+  margin: 0;
+  opacity: 0.8;
+  font-size: 16px;
+}
+
+.profile-details {
+  padding: 30px;
+}
+
+.detail-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  color: #3498db;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.detail-item {
+  margin-bottom: 15px;
+}
+
+.detail-label {
+  display: block;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.detail-value {
+  display: block;
+  font-size: 16px;
+  padding: 8px 12px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  word-break: break-word;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Feedback</title>
+    <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    padding: 30px;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+button {
+    padding: 10px 20px;
+    background: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button:hover {
+    background: #0056b3;
+}
+.feedback-box {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+.message {
+    color: green;
+    margin-bottom: 15px;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h2>All Feedback</h2>
+        {% for fb in feedbacks %}
+            <div class="feedback-box">
+                <p><strong>{{ fb.user.username }}</strong> at {{ fb.submitted_at }}</p>
+                <p>{{ fb.message }}</p>
+            </div>
+        {% empty %}
+            <p>No feedback submitted yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
